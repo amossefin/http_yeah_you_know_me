@@ -1,19 +1,24 @@
+
+require 'pry'
 require 'socket'
 tcp_server = TCPServer.new(9292)
 client = tcp_server.accept
 
 puts "Ready for a request"
 request_lines = []
+counter = 0
 while line = client.gets and !line.chomp.empty?
   request_lines << line.chomp
+  counter += 1
 end
+#binding.pry
 
 puts "Got this request:"
 puts request_lines.inspect
 
 puts "Sending response."
 response = "<pre>" + request_lines.join("\n") + "</pre>"
-output = "<html><head></head><body>#{response}</body></html>"
+output = "<html><head>Hello, World!</head><body> (#{counter})</body></html>"
 headers = ["http/1.1 200 ok",
           "date: #{Time.now.strftime('%a, %e %b %Y %H:%M:%S %z')}",
           "server: ruby",
