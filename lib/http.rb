@@ -9,7 +9,6 @@ request_lines = []
 counter = 0
 while line = client.gets and !line.chomp.empty?
   request_lines << line.chomp
-  counter += 1
 end
 #binding.pry
 
@@ -28,5 +27,6 @@ client.puts headers
 client.puts output
 
 puts ["Wrote this response:", headers, output].join("\n")
+counter += 1
 client.close
 puts "\nResponse complete, exiting."
