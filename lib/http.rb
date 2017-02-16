@@ -2,7 +2,6 @@
 require 'pry'
 require 'socket'
 
-
 class Server 
 
 counter = 0
@@ -33,5 +32,3 @@ request_lines = []
 end
 puts "\nResponse complete, exiting."
 end
-
-#binding.pry
